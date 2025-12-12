@@ -1,0 +1,13 @@
+train: /content/yolov5/dataset/train/images
+val: /content/yolov5/dataset/valid/images
+# test: ../test/images
+
+nc: 6
+names: ['Ambulance', 'Fire Truck', 'Koenigsegg', 'Mclaren', 'Mercedes', 'Police Car']
+
+roboflow:
+  workspace: hadys-workspace
+  project: emergency-vehicle-lepee
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/hadys-workspace/emergency-vehicle-lepee/dataset/1
