@@ -4,7 +4,7 @@
 
 ## Full Dataset
 
-📦 **Download from Google Drive**: [[Click here](https://drive.google.com/file/d/1tjjm40aE8eqMzria_FoWZeDjfFvtRSd1/view?usp=sharing)] 
+📦 **Download from Google Drive**: [Click here](https://drive.google.com/file/d/1tjjm40aE8eqMzria_FoWZeDjfFvtRSd1/view?usp=sharing) 
 
 ## Dataset Information
 - **Train**: 420 images + 420 labels
