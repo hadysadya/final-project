@@ -1,0 +1,153 @@
+# ============================================================================
+# Requirements for Raspberry Pi 5 Deployment
+# Emergency Vehicle Detection & Traffic Control System
+# ============================================================================
+# 
+# Installation Instructions:
+# 1. Create virtual environment: python3 -m venv venv
+# 2. Activate: source venv/bin/activate
+# 3. Update pip: pip install --upgrade pip
+# 4. Install: pip install -r requirements_rpi.txt
+#
+# Note: Some packages (picamera2) should be installed via apt:
+# sudo apt install -y python3-picamera2
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+# Core Deep Learning Framework
+# ----------------------------------------------------------------------------
+# PyTorch for Raspberry Pi (CPU-only version)
+torch==2.0.0
+torchvision==0.15.0
+
+# ----------------------------------------------------------------------------
+# Computer Vision
+# ----------------------------------------------------------------------------
+# OpenCV (headless version for better performance on Raspberry Pi)
+opencv-python-headless==4.8.1.78
+# Alternative: opencv-python==4.8.1.78 (if you need GUI features)
+
+# Pillow for image processing
+Pillow==10.1.0
+
+# ----------------------------------------------------------------------------
+# Audio Processing
+# ----------------------------------------------------------------------------
+# PyAudio for microphone input
+PyAudio==0.2.14
+
+# NumPy for numerical operations (audio & image processing)
+numpy==1.24.3
+
+# SciPy for signal processing (optional, for advanced audio features)
+scipy==1.11.4
+
+# ----------------------------------------------------------------------------
+# GPIO & Hardware Control
+# ----------------------------------------------------------------------------
+# GPIOZero for easy GPIO control (LED, Servo, etc.)
+gpiozero==2.0.1
+
+# RPi.GPIO (backup GPIO library, gpiozero uses this internally)
+RPi.GPIO==0.7.1
+
+# pigpio for advanced servo control (optional, for smoother servo movement)
+# Note: Requires pigpio daemon to be running
+# pigpio==1.78
+
+# ----------------------------------------------------------------------------
+# Camera (Picamera2)
+# ----------------------------------------------------------------------------
+# Note: Picamera2 should be installed via apt, not pip:
+# sudo apt install -y python3-picamera2
+#
+# If you need to install via pip (not recommended):
+# picamera2==0.3.12
+
+# ----------------------------------------------------------------------------
+# YOLOv5 Dependencies
+# ----------------------------------------------------------------------------
+# YAML for configuration files
+PyYAML==6.0.1
+
+# Matplotlib for plotting (optional, for visualization)
+matplotlib==3.7.3
+
+# Seaborn for better plots (optional)
+seaborn==0.13.0
+
+# Pandas for data handling (optional)
+pandas==2.0.3
+
+# ----------------------------------------------------------------------------
+# Utilities
+# ----------------------------------------------------------------------------
+# tqdm for progress bars
+tqdm==4.66.1
+
+# psutil for system monitoring
+psutil==5.9.6
+
+# python-dotenv for environment variables (optional)
+python-dotenv==1.0.0
+
+# ----------------------------------------------------------------------------
+# Logging & Monitoring
+# ----------------------------------------------------------------------------
+# colorlog for colored console output (optional)
+# colorlog==6.8.0
+
+# ----------------------------------------------------------------------------
+# Development & Testing (optional - comment out for production)
+# ----------------------------------------------------------------------------
+# pytest==7.4.3
+# pytest-cov==4.1.0
+# black==23.11.0
+# flake8==6.1.0
+# mypy==1.7.1
+
+# ----------------------------------------------------------------------------
+# Platform Specific Notes
+# ----------------------------------------------------------------------------
+# 
+# For Raspberry Pi 5 with Bookworm OS (64-bit):
+# 
+# 1. System packages required before pip install:
+#    sudo apt install -y python3-pip python3-venv python3-dev
+#    sudo apt install -y libportaudio2 portaudio19-dev
+#    sudo apt install -y libatlas-base-dev libopenblas-dev
+#    sudo apt install -y libjpeg-dev libtiff-dev libpng-dev
+#    sudo apt install -y libavcodec-dev libavformat-dev libswscale-dev
+#    sudo apt install -y python3-picamera2
+#
+# 2. PyTorch installation notes:
+#    - Use CPU-only version (no CUDA on Raspberry Pi)
+#    - torch 2.0.0 is tested and stable on RPi 5
+#    - If installation fails, try: pip install torch --extra-index-url https://download.pytorch.org/whl/cpu
+#
+# 3. OpenCV installation notes:
+#    - opencv-python-headless is lighter (no GUI)
+#    - If cv2.imshow() needed, use opencv-python instead
+#
+# 4. PyAudio installation notes:
+#    - Requires portaudio19-dev system package
+#    - If pip install fails, try: sudo apt install python3-pyaudio
+#
+# 5. Memory considerations:
+#    - Raspberry Pi 5 with 4GB RAM is minimum
+#    - 8GB RAM recommended for better performance
+#    - Consider swap space if RAM is limited
+#
+# 6. Performance optimization:
+#    - Use virtual environment to avoid conflicts
+#    - Install only required packages in production
+#    - Comment out development dependencies
+#
+# ============================================================================
+# Version Information
+# ============================================================================
+# Python: 3.9+ (3.11 recommended for RPi OS Bookworm)
+# Raspberry Pi OS: Bookworm (64-bit) or later
+# Tested on: Raspberry Pi 5 (4GB/8GB)
+# Last Updated: December 2024
+# ============================================================================
