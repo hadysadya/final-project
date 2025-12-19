@@ -13,7 +13,7 @@ Laptop → RealVNC Viewer → Raspberry Pi 5 Desktop
 ```
 
 **RealVNC Connection:**
-- Address: `192.168.137.66` (Your Raspberry Pi IP)
+- Address: `192.168.137.66`
 - Username: `admin`
 - Password: `admin`
 
