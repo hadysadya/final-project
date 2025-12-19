@@ -1,4 +1,4 @@
-# 🚨 Emergency Vehicle Detection - Deployment Guide
+# 🚨 Emergency Vehicle Detection - Deployment
 
 ## Overview
 
