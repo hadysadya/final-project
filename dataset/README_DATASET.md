@@ -25,6 +25,7 @@ dataset/
 ├── data.yaml                  # Config file
 ├── README.dataset.txt         # Dataset metadata
 ├── README.roboflow.txt        # Roboflow export info
+├── README_DATASET.md          # Dataset documentation
 ├── train/
 │   ├── images/                # 420 training images
 │   └── labels/                # 420 YOLO labels
