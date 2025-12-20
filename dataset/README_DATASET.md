@@ -38,7 +38,7 @@ dataset/
 
 ### For Deployment (Current Prototype):
 ```bash
-# Dataset NOT needed - pre-trained model included
+# Dataset NOT needed - trained model included
 # Just run: python3 src/deployment/main.py
 ```
 
