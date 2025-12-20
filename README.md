@@ -1,90 +1,211 @@
-# Object Detection with YOLOv5
-Final Project - Object detection using YOLOv5 algorithm
+# 🚨 Emergency Vehicle Detection & Traffic Control System
 
-## 📋 Description
-This project implements YOLOv5 for emergency vehicle detection. The system can perform real-time detection on images and videos.
+**Prototype for Intelligent Traffic Management**
 
-**Objective**: Design and implement a real-time emergency vehicle detection system integrated with traffic light control.
+[![Python](https://img.shields.io/badge/Python-3.11.2-blue.svg)](https://www.python.org/)
+[![YOLOv5](https://img.shields.io/badge/YOLOv5-Deployed-green.svg)](https://github.com/ultralytics/yolov5)
+[![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi%205-red.svg)](https://www.raspberrypi.com/)
+[![Status](https://img.shields.io/badge/Status-Prototype-yellow.svg)](https://github.com/hadysadya/final-project)
 
-## 📊 Dataset
-- **Training**: 420 images
-- **Validation**: 180 images  
-- **Format**: YOLO (.txt)
-- **Classes**: 6 classes
-  - **Emergency Vehicles**: Ambulance, Fire Truck, Police Car
-  - **Non-Emergency Vehicles**: Koenigsegg, Mclaren, Mercedes *(used for occlusion testing)*
+## 🎯 Project Overview
 
-📦 **Download complete dataset**: See [dataset/README.md](dataset/README.md)
+Proof-of-concept system that uses **computer vision** and **audio detection** to detect emergency vehicles (ambulance, fire truck, police) and automatically assign lane priority through traffic light control.
+
+### Key Features
+
+- 🎥 **Real-time Detection**: YOLOv5-based emergency vehicle detection
+- 🎤 **4-Direction Audio**: Directional sound detection using 4 microphones
+- ✅ **Dual Verification**: Audio + visual confirmation to reduce false positives
+- 🎛️ **Servo Control**: Automatic camera orientation to sound source
+- 🚦 **Traffic Light Control**: GPIO-based 4-way traffic light automation
+- ⏱️ **Priority Mode**: 15-second green light hold for emergency vehicles
+
+## ⚠️ Prototype Disclaimer
+
+This is a **proof-of-concept prototype** created for:
+- ✅ Academic demonstration
+- ✅ Technology feasibility testing
+- ✅ Educational purposes
+- ❌ **NOT for production deployment**
+- ❌ **NOT tested in real traffic scenarios**
+
+**Limitations**:
+- Limited dataset (600 images)
+- Controlled environment testing only
+- No safety certifications
+- Requires extensive validation for real-world use
+
+## 🛠️ Technology Stack
+
+| Component | Technology |
+|-----------|-----------|
+| **Hardware** | Raspberry Pi 5 (8GB) |
+| **Detection** | YOLOv5 (PyTorch) |
+| **Camera** | Picamera2 (Camera Module) |
+| **Audio** | PyAudio + 4x USB Microphones |
+| **GPIO Control** | GPIOZero |
+| **Servo** | AngularServo (0-180°) |
+| **Language** | Python 3.11.2 |
+
+## 📂 Repository Structure
+
+```
+final-project/
+├── dataset/                    # Training dataset 
+│   ├── train/                  # Training images sample
+│   ├── valid/                  # Validation images sample
+│   ├── data.yaml               # Config file
+│   ├── README.dataset.txt      # Dataset metadata
+│   ├── README.roboflow.txt     # Roboflow export info
+│   └── README_DATASET.md       # Dataset documentation
+│
+├── models/                     # Trained models
+│   └── best.torchscript        # Trained YOLOv5 (7MB)
+│
+├── src/
+│   └── deployment/             # Deployment code
+│       ├── main.py             # Main program
+│       ├── detect_yolov5.py    # YOLO detection module
+│       ├── traffic_control.py  # Traffic light control
+│       ├── globals.py          # Global variables
+│
+├── notebooks/                  # Jupyter notebooks
+│   └── training.ipynb          # Model training notebook
+│
+├── exp_results/                # Training experiment results
+│   └── runs/train/exp/         # Training metrics & logs
+│
+├── images/                     # Images example
+│
+├── README_DEPLOYMENT.md        # Deployment guide
+├── THONNY_QUICKSTART.md        # Thonny IDE guide
+├── README.md                   # This file
+└── requirements.txt            # Training requirements
+```
 
 ## 🚀 Quick Start
 
-### Install Dependencies
+### Prerequisites
+
+- Raspberry Pi 5 
+- Picamera2-compatible camera
+- 4x USB microphones
+- Servo motor 
+- 12x LEDs for traffic lights
+- External power supply for servo
+
+### Running the System
+
 ```bash
-git clone https://github.com/hadysadya/final-project.git
+# Activate virtual environment
 cd final-project
-pip install -r requirements.txt
+source venv/bin/activate
+
+# Run main program
+python3 src/deployment/main.py
 ```
 
-### Run Detection
-```bash
-# Image detection
-python src/detect.py --weights models/best.torchscript --source image.jpg
+**Or via Thonny IDE**: See [`THONNY_QUICKSTART.md`](THONNY_QUICKSTART.md)
 
-# Video detection
-python src/detect.py --weights models/best.torchscript --source video.mp4
+## 📊 System Architecture
 
-# Webcam detection
-python src/detect.py --weights models/best.torchscript --source 0
+```
+┌─────────────┐    ┌─────────────┐    ┌──────────────┐
+│   Camera    │ >  |    YOLO     │ >  │  Detection   │
+│ (Picamera2) │    │  Detection  │    │    Queue     │
+└─────────────┘    └─────────────┘    └──────┬───────┘
+                                             │
+┌─────────────┐    ┌─────────────┐           │
+│4x Microphone│ >  │   Audio     │           │
+│  (PyAudio)  │    │ Processing  │           │
+└─────────────┘    └──────┬──────┘           │
+                          │                  │
+                          └────────┬─────────┘
+                                   ▼
+                          ┌────────────────┐
+                          │ Main Controller│
+                          │ (Verification) │
+                          └────────┬───────┘
+                                   │
+              ┌────────────────────┼────────────────────┐
+              ▼                    ▼                    ▼
+       ┌──────────┐         ┌──────────┐        ┌──────────┐
+       │  Servo   │         │ Traffic  │        │ Logging  │
+       │ Control  │         │  Lights  │        │  System  │
+       └──────────┘         └──────────┘        └──────────┘
 ```
 
-### Training (Optional)
-```bash
-python src/train.py --img 640 --batch 16 --epochs 100 --data dataset/data.yaml
-```
+### Detection Logic
 
-## 📈 Results
-| Metric | Value |
-|--------|-------|
-| mAP@0.5 | 0.99 |
-| Precision | 0.99 |
-| Recall | 1 |
+1. **Audio Detection**: 4 microphones detect sound from all directions
+2. **Servo Movement**: Camera turns toward loudest sound source
+3. **Visual Verification**: YOLO confirms emergency vehicle presence
+4. **Dual Confirmation**: Proceed only if BOTH audio + visual detected
+5. **Traffic Control**: Activate green light for emergency lane
+6. **Priority Hold**: Maintain green for 15 seconds
+7. **Cooldown**: 15-second cooldown before next detection
 
-**Training Graphs:**
-![Results](exp_results/runs/train/exp/results.png)
+**Special Case**: North direction (camera limitation) → audio-only trigger
 
-**Detection Example:**
+## 🎓 Academic Context
+
+This project was developed as a **final project** demonstrating:
+- Computer vision applications in traffic management
+- Multi-modal sensor fusion (audio + visual)
+- Real-time embedded systems programming
+- IoT integration (camera, microphones, servo, GPIO)
+
+**Course**: Thesis  
+**Institution**: Telkom University  
+**Supervisor**: Yulinda Eliskar & Rita Purnamasari
+**Year**: 2025
+
+## 📈 Performance (Prototype)
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| Detection Accuracy | ~85-90% | ✅ Good for prototype |
+| Response Time | <2 seconds | ✅ Real-time capable |
+| System Uptime | 2-4 hours continuous | ✅ Stable for demo |
+
+## 📸 Demo
+
 ![Ambulance Detection](images/detection_example.png)
 
-## 📁 Project Structure
-```
-final-project/
-├── dataset/           # Training & validation dataset
-├── models/            # Model weights (best.torchscript)
-├── src/               # Source code (train.py, detect.py)
-├── exp_results/       # Training & evaluation results
-├── notebooks/         # Jupyter notebooks
-└── requirements.txt
-```
 
-## 🛠️ Tech Stack
-- Python 3.8+
-- PyTorch
-- YOLOv5 (Ultralytics)
-- OpenCV
+## 📚 Documentation
 
-## 👨‍🎓 Author
-**Made Hady Sadya Wibawa**  
-Student ID: 1101213240  
-Telecommunication Engineering - Telkom University
+- **Deployment Guide**: [`README_DEPLOYMENT.md`](README_DEPLOYMENT.md)
+- **Thonny IDE Guide**: [`THONNY_QUICKSTART.md`](THONNY_QUICKSTART.md)
+- **Dataset Info**: [`dataset/README_DATASET.md`](dataset/README_DATASET.md)
 
-**Supervisors**: Yulinda Eliskar, Rita Purnamasari
+## 🤝 Contributing
 
-## 📚 References
-1. Ultralytics YOLOv5. https://github.com/ultralytics/yolov5
-2. G. Karmakar, A. Chowdhury, J. Kamruzzaman, and I. Gondal, "A Smart Priority-Based Traffic Control System for Emergency Vehicles," *IEEE Sensors Journal*, vol. 21, no. 14, pp. 15849-15860, July 2021.
-3. S. Deepajothi and D. Palanival Rajan, "Intelligent Traffic Management for Emergency Vehicles using Convolutional Neural Network," in *2021 7th International Conference on Advanced Computing and Communication Systems (ICACCS)*, Coimbatore, India, 2021, pp. 1-6.
-4. V.-T. Tran and W.-H. Tsai, "Audio-Vision Emergency Vehicle Detection," *IEEE Sensors Journal*, vol. 21, no. 24, pp. 27905-27917, Dec. 2021.
+This is an academic prototype. For questions or suggestions:
+- Open an [Issue](https://github.com/hadysadya/final-project/issues)
+- Contact: hady17306@gmail.com
+
+## 📄 License
+
+**Academic/Educational Use Only**
+
+This prototype is provided for educational purposes. Not licensed for commercial or production use.
+
+## 🙏 Acknowledgments
+
+- **YOLOv5**: [Ultralytics](https://github.com/ultralytics/yolov5)
+- **Raspberry Pi Foundation**: Hardware platform
+- **PyTorch Team**: Deep learning framework
+- **Telkom University**: Academic support
+
+## 📞 Contact
+
+**Author**: Hady Sadya  
+**Email**: hady17306@gmail.com  
+**GitHub**: [@hadysadya](https://github.com/hadysadya)  
+**Project Link**: [https://github.com/hadysadya/final-project](https://github.com/hadysadya/final-project)
 
 ---
-📧 Contact: hady17306@gmail.com  
-⭐ If you find this helpful, give this repository a star!
+
+**Status**: 🟡 Prototype (July 2025)  
+**Version**: 1.0.0
