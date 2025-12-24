@@ -1,6 +1,5 @@
-train: /content/yolov5/dataset/train/images
-val: /content/yolov5/dataset/valid/images
-# test: ../test/images
+train: .../train/images
+val: .../valid/images
 
 nc: 6
 names: ['Ambulance', 'Fire Truck', 'Koenigsegg', 'Mclaren', 'Mercedes', 'Police Car']
