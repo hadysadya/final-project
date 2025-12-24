@@ -70,7 +70,7 @@ final-project/
 │       ├── globals.py          # Global variables
 │
 ├── notebooks/                  # Jupyter notebooks
-│   └── training.ipynb          # Model training notebook
+│   └── training_notebook.ipynb # Model training notebook
 │
 ├── exp_results/                # Training experiment results
 │   └── runs/train/exp/         # Training metrics & logs
@@ -79,8 +79,7 @@ final-project/
 │
 ├── README_DEPLOYMENT.md        # Deployment guide
 ├── THONNY_QUICKSTART.md        # Thonny IDE guide
-├── README.md                   # This file
-└── requirements.txt            # Training requirements
+└── README.md                   # This file
 ```
 
 ## 🚀 Quick Start
