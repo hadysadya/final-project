@@ -170,8 +170,7 @@ This project was developed as a **final project** demonstrating:
 
 ## 📸 Demo
 
-![Ambulance Detection](images/detection_example.png)
-
+![Ambulance Detection](images/demo.png)
 
 ## 📚 Documentation
 
