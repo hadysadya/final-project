@@ -2,9 +2,9 @@ import pyaudio
 import numpy as np
 import time
 import threading
-import lalulintas
+import traffic_control
 from globals import pause_cycle
-from detectyolov5 import run
+from detect_yolov5 import run
 from gpiozero import AngularServo
 from queue import Queue
 
@@ -221,7 +221,7 @@ def run_object_detection(label_queue):
     print("Starting object detection...")
     try:
         run(
-            weights='model3.torchscript',
+            weights='best.torchscript',
             imgsz=(640, 640),
             conf_thres=0.25,
             iou_thres=0.45,
