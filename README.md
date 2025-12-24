@@ -156,7 +156,7 @@ This project was developed as a **final project** demonstrating:
 
 **Course**: Thesis  
 **Institution**: Telkom University  
-**Supervisor**: Yulinda Eliskar & Rita Purnamasari
+**Supervisor**: Yulinda Eliskar & Rita Purnamasari  
 **Year**: 2025
 
 ## 📈 Performance (Prototype)
