@@ -1,0 +1,22 @@
+# ============================================
+# DEPLOYMENT REQUIREMENTS (Raspberry Pi 5)
+# ============================================
+
+# Core Deep Learning
+torch==2.0.1
+torchvision==0.15.2
+
+# Computer Vision (lightweight for Pi)
+opencv-python-headless==4.8.1.78
+Pillow==10.0.0
+
+# Audio Processing
+pyaudio==0.2.13
+numpy==1.24.3
+
+# GPIO Control (Raspberry Pi specific)
+gpiozero==2.0
+RPi.GPIO==0.7.1
+
+# Utilities
+PyYAML==6.0.1
