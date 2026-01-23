@@ -4,8 +4,6 @@ Hardware specifications and GPIO pin mappings for the emergency vehicle detectio
 
 **For setup and running instructions:** See [`THONNY_QUICKSTART.md`](THONNY_QUICKSTART.md)
 
----
-
 ## 🔧 Required Components
 
 | Component | Specification |
@@ -16,8 +14,6 @@ Hardware specifications and GPIO pin mappings for the emergency vehicle detectio
 | **Servo** | Standard servo 0-180° |
 | **LEDs** | 12x LEDs (Red, Yellow, Green × 4 directions) |
 | **Power** | 5V 5A for RPi + 2× 3.7V batteries for servo |
-
----
 
 ## 📍 GPIO Pin Mapping
 
@@ -47,8 +43,6 @@ Hardware specifications and GPIO pin mappings for the emergency vehicle detectio
 
 **Note:** North direction uses audio-only detection (camera physically blocked).
 
----
-
 ## 📊 System Architecture
 ```
 ┌─────────────┐
@@ -71,8 +65,6 @@ Hardware specifications and GPIO pin mappings for the emergency vehicle detectio
 3. YOLO verifies emergency vehicle
 4. Main controller activates traffic light if verified
 
----
-
 ## 📈 Performance Specifications
 
 | Metric | Value (RPi 5) |
@@ -85,8 +77,6 @@ Hardware specifications and GPIO pin mappings for the emergency vehicle detectio
 
 *Estimated values with YOLOv5n model
 
----
-
 ## 📚 Related Documentation
 
 - **Setup & Running:** [`THONNY_QUICKSTART.md`](THONNY_QUICKSTART.md)
@@ -95,4 +85,4 @@ Hardware specifications and GPIO pin mappings for the emergency vehicle detectio
 
 ---
 
-Version 1.0.0 | January 2026
+Version 1.0.0 | July 2025
