@@ -14,7 +14,7 @@ Proof-of-concept system that detects emergency vehicles (ambulance, fire truck, 
 **Key Technologies:**
 - YOLOv5 for real-time object detection
 - 4-microphone array for directional audio
-- Dual verification (audio + visual) to reduce false positives
+- Dual verification to reduce false positives
 - Raspberry Pi 5 with GPIO control
 
 ## ⚠️ Prototype Disclaimer
@@ -33,7 +33,7 @@ This is an **academic prototype** for educational purposes only.
 
 ## 🚀 Quick Start
 
-### For Users (Running the System)
+### For Users
 
 **See:** [`THONNY_QUICKSTART.md`](THONNY_QUICKSTART.md)
 
@@ -59,13 +59,17 @@ Train on Google Colab with your own dataset.
 ## 📂 Repository Structure
 ```
 final-project/
-├── src/deployment/          # Main application code
+├── dataset/                 # Training dataset 
+├── exp_results/             # Training result
+├── images/                  # Demo documentation
 ├── models/                  # Trained YOLOv5 model
-├── dataset/                 # Training dataset (600 images)
 ├── notebooks/               # Training notebook
+├── src/deployment/          # Main application code
+├── .gitignore               # Ignore file
 ├── HARDWARE_SETUP.md        # Hardware specifications
+├── README.md                # This file
 ├── THONNY_QUICKSTART.md     # User guide
-└── README.md                # This file
+└── requirements.txt         # Dependencies
 ```
 
 ## 📚 Documentation
@@ -78,7 +82,6 @@ final-project/
 | [notebooks/training_notebook.ipynb](notebooks/training_notebook.ipynb) | Model training guide |
 
 ## 🎓 Academic Context
-
 **Final Project** - Telkom University  
 **Course:** Thesis  
 **Supervisors:** Yulinda Eliskar & Rita Purnamasari  
@@ -86,16 +89,15 @@ final-project/
 
 **Demonstrates:**
 - Computer vision in traffic management
-- Multi-modal sensor fusion (audio + visual)
+- Multi-modal sensor fusion 
 - Real-time embedded systems
 - IoT integration
 
 ## 📊 Performance
-
 | Metric | Value |
 |--------|-------|
-| Detection Accuracy | ~85% (prototype) |
-| Response Time | <1 seconds |
+| Detection Accuracy | ~87% |
+| Response Time | ~35 milliseconds |
 | System Uptime | ~2 hours continuous |
 
 ## 🛠️ Technology Stack
