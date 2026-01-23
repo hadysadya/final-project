@@ -7,8 +7,6 @@ Real-time emergency vehicle detection using YOLOv5 with automatic traffic light 
 [![Platform](https://img.shields.io/badge/Platform-Raspberry%20Pi%205-red.svg)](https://www.raspberrypi.com/)
 [![Status](https://img.shields.io/badge/Status-Prototype-yellow.svg)](https://github.com/hadysadya/final-project)
 
----
-
 ## 📋 What is This?
 
 Proof-of-concept system that detects emergency vehicles (ambulance, fire truck, police) using **computer vision + audio detection**, then automatically gives them traffic light priority.
@@ -18,8 +16,6 @@ Proof-of-concept system that detects emergency vehicles (ambulance, fire truck, 
 - 4-microphone array for directional audio
 - Dual verification (audio + visual) to reduce false positives
 - Raspberry Pi 5 with GPIO control
-
----
 
 ## ⚠️ Prototype Disclaimer
 
@@ -34,8 +30,6 @@ This is an **academic prototype** for educational purposes only.
 - ❌ Production deployment
 - ❌ Real traffic scenarios
 - ❌ Safety-critical applications
-
----
 
 ## 🚀 Quick Start
 
@@ -62,8 +56,6 @@ Includes GPIO pin mappings, component specs, and wiring details.
 
 Train on Google Colab with your own dataset.
 
----
-
 ## 📂 Repository Structure
 ```
 final-project/
@@ -76,8 +68,6 @@ final-project/
 └── README.md                # This file
 ```
 
----
-
 ## 📚 Documentation
 
 | Document | Purpose |
@@ -86,8 +76,6 @@ final-project/
 | [HARDWARE_SETUP.md](HARDWARE_SETUP.md) | Hardware specs and GPIO mapping |
 | [dataset/README_DATASET.md](dataset/README_DATASET.md) | Dataset information |
 | [notebooks/training_notebook.ipynb](notebooks/training_notebook.ipynb) | Model training guide |
-
----
 
 ## 🎓 Academic Context
 
@@ -102,8 +90,6 @@ final-project/
 - Real-time embedded systems
 - IoT integration
 
----
-
 ## 📊 Performance
 
 | Metric | Value |
@@ -112,13 +98,9 @@ final-project/
 | Response Time | <1 seconds |
 | System Uptime | ~2 hours continuous |
 
----
-
 ## 🛠️ Technology Stack
 
 Python 3.11 • PyTorch • YOLOv5 • OpenCV • PyAudio • Raspberry Pi 5 • GPIO
-
----
 
 ## 📞 Contact
 
