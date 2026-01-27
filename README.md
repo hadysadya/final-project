@@ -97,7 +97,7 @@ final-project/
 | Metric | Value |
 |--------|-------|
 | Detection Accuracy | ~87% |
-| Response Time | ~35 milliseconds |
+| Response Time | ~100 milliseconds |
 | System Uptime | ~2 hours continuous |
 
 ## 🛠️ Technology Stack
