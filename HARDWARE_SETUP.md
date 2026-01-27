@@ -46,17 +46,17 @@ Hardware specifications and GPIO pin mappings for the emergency vehicle detectio
 ## 📊 System Architecture
 ```
 ┌─────────────┐
-│    Camera   │──→ YOLO Detection ──→ Label Queue
-└─────────────┘                            │
-                                           ↓
-┌─────────────┐                     ┌──────────────┐
-│   4× Mics   │──→ Audio Process ──→│ Main Control │
-└─────────────┘                     └──────┬───────┘
-                                           │
-                         ┌─────────────────┼─────────────────┐
-                         ↓                 ↓                 ↓
-                       Servo            Traffic           Logging
-                      Control           Lights            System
+│   Camera    │──→ YOLO Detection ──→   Label Queue
+└─────────────┘                              │
+                                             ↓
+┌─────────────┐                       ┌──────────────┐
+│   4× Mics   │──→ Audio Process  ──→ │ Main Control │
+└─────────────┘                       └──────┬───────┘
+                                             │
+                           ┌─────────────────┼─────────────────┐
+                           ↓                 ↓                 ↓
+                         Servo            Traffic           Logging
+                        Control           Lights            System
 ```
 
 **Flow:**
@@ -69,16 +69,11 @@ Hardware specifications and GPIO pin mappings for the emergency vehicle detectio
 
 | Metric | Value (RPi 5) |
 |--------|---------------|
-| YOLO Inference | ~200-300ms |
-| Audio Latency | <100ms |
-| Total Response | <2 seconds |
-| CPU Usage | 40-60% |
-| RAM Usage | 1.5-2GB |
-
-*Estimated values with YOLOv5n model
+| YOLO Inference | ~35 milliseconds |
+| Audio Latency | ~40 milliseconds |
+| Total Response | ~75 milliseconds |
 
 ## 📚 Related Documentation
-
 - **Setup & Running:** [`THONNY_QUICKSTART.md`](THONNY_QUICKSTART.md)
 - **Dataset Info:** [`dataset/README_DATASET.md`](dataset/README_DATASET.md)
 - **Training Guide:** [`notebooks/training_notebook.ipynb`](notebooks/training_notebook.ipynb)
