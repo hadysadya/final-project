@@ -25,14 +25,10 @@ Detects emergency vehicles (ambulance, fire truck, police) using:
 - Raspberry Pi OS (64-bit recommended)
 - Python 3.11+
 - Virtual environment with dependencies installed
-- RealVNC Connect enabled
+- RealVNC Server enabled
 
 **If not installed yet:**
 ```bash
-# Install system dependencies
-sudo apt-get update
-sudo apt-get install -y portaudio19-dev python3-pyaudio
-
 # Clone repository
 cd ~
 git clone https://github.com/hadysadya/final-project.git
@@ -42,9 +38,6 @@ cd final-project
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-
-# Enable camera interface
-sudo raspi-config  # Interface Options → Camera → Enable
 ```
 
 ## ⚙️ One-Time Setup
@@ -52,7 +45,7 @@ sudo raspi-config  # Interface Options → Camera → Enable
 ### 1. Access Raspberry Pi via RealVNC
 
 **RealVNC Connection:**
-- Address: `<your-pi-ip>`  *(Find with `hostname -I` on Pi)*
+- Address: `<your-pi-ip>` 
 - Username: `<your-username>`
 - Password: `<your-password>`
 
@@ -114,7 +107,6 @@ python3 src/deployment/main.py
 **Stop:** Press **Ctrl+C**
 
 ## ⌨️ Thonny Shortcuts
-
 | Action | Shortcut |
 |--------|----------|
 | Run program | F5 |
@@ -123,44 +115,6 @@ python3 src/deployment/main.py
 | Uncomment lines | Ctrl+Shift+3 |
 | Find text | Ctrl+F |
 | Auto-complete | Ctrl+Space |
-
-## 🔧 Troubleshooting
-
-### "No module named 'torch'"
-**Cause:** Virtual environment not activated in Thonny  
-**Fix:** Recheck interpreter setting (Setup step 2)
-
-### "Permission denied: /dev/gpiomem"
-**Fix:**
-```bash
-sudo usermod -a -G gpio $USER
-sudo reboot
-```
-
-### "Microphone not initialized"
-**Fix:**
-```bash
-# Check USB devices
-lsusb
-
-# List audio devices
-arecord -l
-
-# Try different USB ports
-```
-
-### Camera not working
-**Fix:**
-```bash
-# Test camera
-libcamera-hello
-
-# Enable interface
-sudo raspi-config  # Interface Options → Camera
-```
-
-### GPIO conflicts (pins already in use)
-**Fix:** Stop program completely before re-running. If persistent: `sudo reboot`
 
 ## 🔄 Typical Workflows
 
@@ -181,11 +135,8 @@ sudo raspi-config  # Interface Options → Camera
 6. Stop when done
 
 ## 📚 Additional Documentation
-
 - **Hardware specs & wiring:** [`HARDWARE_SETUP.md`](HARDWARE_SETUP.md)
 - **Dataset information:** [`dataset/README_DATASET.md`](dataset/README_DATASET.md)
 - **Training your own model:** [`notebooks/training_notebook.ipynb`](notebooks/training_notebook.ipynb)
-
----
 
 **Note:** Thonny remembers your last opened files, working directory, and interpreter settings between sessions.
